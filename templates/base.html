@@ -1,0 +1,182 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="es-ar">
+
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title> {% block title%} Proyecto blog Info 2022 B {% endblock title%} </title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="{% static 'assets/img/logo.png'%}" rel="icon">
+  <link href="{% static 'assets/img/logo.png'%}" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Jost:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="{% static 'assets/vendor/aos/aos.css'%}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/bootstrap/css/bootstrap.min.css'%}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/bootstrap-icons/bootstrap-icons.css'%}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/boxicons/css/boxicons.min.css'%}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/glightbox/css/glightbox.min.css'%}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/remixicon/remixicon.css'%}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/swiper/swiper-bundle.min.css'%}" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="{% static 'assets/css/style.css'%}" rel="stylesheet">
+
+</head>
+
+
+<body>
+
+<!-- ======= Header ======= -->
+  <header id="header" class="fixed-top ">
+    <div class="container d-flex align-items-center">
+
+      {% comment %} <div href="{% url 'index' %}#hero" class="">
+        <img src="{%static 'assets/img/logo.png'%}" class="image-fluid" style="margin-right: 3%; max-width: 80%;">
+      </div>   {% endcomment %}
+      <h5 class="logo me-auto"><a href="{% url 'index' %}#hero">Fundación ALA'</a></h5>
+      
+      {% if user.is_authenticated %}<h6 style="font-size: small; color:#fff; margin-left: 3%; margin-top: 1%;"class="container d-flex align-items-center">
+        Usuario: {{user.username}}</h6>
+      {% endif %}
+        
+      <nav id="navbar" class="navbar">
+        
+        <ul>
+          
+          <li><a class="nav-link scrollto" href="{% url 'index' %}#hero">Inicio</a></li>
+          <li><a class="nav-link scrollto" href="{% url 'index' %}#about">Nosotros</a></li>
+          <li><a class="nav-link scrollto" href="{% url 'apps.noticia:noticias' %}#services">Noticias</a></li>
+          <li><a class="nav-link" href="{% url 'apps.noticia:categorias' %}">Categorías</a></li>
+          <li><a class="nav-link scrollto" href="{% url 'index' %}#team">Nuestro equipo</a></li>
+          <li><a class="nav-link scrollto" href="#footer">Contacto</a></li>
+          {% if user.is_authenticated %}
+          <li><a class="getstarted scrollto" href="{% url 'apps.usuario:logout' %}">Cerrar sesión</a></li>
+          {% else %}
+          <li><a class="getstarted scrollto" href="{% url 'apps.usuario:login' %}">Registro/Inicio sesión</a></li>
+          {% endif %}
+          
+          {% if user.is_superuser %}
+                      <div class="dropdown">
+                        <li><a class="getstarted scrollto" class="dropdown-item">Administrar</a></li>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <li><a class="dropdown-item" href="{% url 'apps.noticia:AgregarNoticia' %}">Agregar noticia</a></li>
+                            <li><a class="dropdown-item" href="{% url 'apps.noticia:AgregarCategoria' %}">Agregar categoria</a></li>
+                            <li><a class="dropdown-item" href="{% url 'apps.usuario:listarUsuarios' %}">Lista de Usuarios</a></li>
+                        </ul>
+                      </div>
+            {% endif %}
+
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+        
+      </nav>
+      <!-- .navbar -->
+    </div>
+  </header><!-- End Header -->
+ 
+
+{% block contenido %}
+
+
+{% endblock  %}
+
+
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer">
+
+    <div class="footer-newsletter">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-6">
+            <h4></h4>
+            <p></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-top">
+      <div class="container">
+        <div class="row">
+
+          <div class="col-lg-3 col-md-6 footer-contact">
+            <h3>Fundación ALA'</h3>
+            <p>
+              Fortín Loma negra 236 primer piso dpto. 7 Palermo I <br>
+              Resistencia, Chaco<br>
+              Argentina <br><br>
+              <strong>Teléfono:</strong> 3624002764<br>
+              <strong>Email:</strong> fundación.ala.chaco@email.com<br>
+            </p>
+          </div>
+
+          <div class="col-lg-3 col-md-6 footer-links">
+            <h4>Links de la página</h4>
+            <ul>
+              <li><i class="bx bx-chevron-right"></i> <a href="{% url 'index' %}#hero">Inicio</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="{% url 'index' %}#about">Nosotros</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="{% url 'apps.noticia:noticias' %}#services">Noticias</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="{% url 'index' %}#team">Nuestro equipo</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="{% url 'index' %}#contact">Contacto</a></li>
+            </ul>
+          </div>
+
+          <div class="col-lg-3 col-md-6 footer-links">
+            <img src="{%static 'assets/img/logo.png'%}" style="margin-right: 60%; max-width: 60%;">
+          </div>
+
+          <div class="col-lg-3 col-md-6 footer-links">
+            <h4>Nuestras redes sociales</h4>
+            <p>Accedé nuestras redes sociales para seguirnos y enterarte muchas más cosas!</p>
+            <div class="social-links mt-3">
+              <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
+              <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
+              <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
+              <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
+              <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="container footer-bottom clearfix">
+      <div class="copyright">
+        &copy; Copyright <strong><span>Grupo 12</span></strong>. Todos los derechos reservados
+      </div>
+      <div class="credits">
+        Diseñado por Grupo 12 <a href="https://poloitchaco.org.ar/informatorio/inscripciones2020/?gclid=CjwKCAiAnZCdBhBmEiwA8nDQxR7z0nHe_jdK_ELZSjFLnEqhxsK0BqjGOtbi_qC2w7YyMW1VWtA-JxoCs5QQAvD_BwE"> Informatorio 2022B</a>
+      </div>
+    </div>
+  </footer>
+<!-- Fin footer -->
+  
+<!-- ======= Animaciones ======= -->
+    <!-- Vendor JS Files -->
+    <script src="{% static 'assets/vendor/aos/aos.js' %}"></script>
+    <script src="{% static 'assets/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'assets/vendor/glightbox/js/glightbox.min.js' %}"></script>
+    <script src="{% static 'assets/vendor/isotope-layout/isotope.pkgd.min.js' %}"></script>
+    <script src="{% static 'assets/vendor/swiper/swiper-bundle.min.js' %}"></script>
+    <script src="{% static 'assets/vendor/waypoints/noframework.waypoints.js' %}"></script>
+    <script src="{% static 'assets/vendor/php-email-form/validate.js' %}"></script>
+  
+    <!-- Template Main JS File -->
+    <script src="{% static 'assets/js/main.js' %}"></script>
+<!-- Fin animaciones -->
+
+</body>
+
+</html>

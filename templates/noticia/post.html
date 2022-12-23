@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% block title %}Comentar esta noticia{%endblock %}
+
+{% block contenido %}
+
+{% if user.is_superuser %}
+
+<section class="d-flex align-items-center">
+    <div class="container" style= "padding-top:40px;">
+        <div class="row">
+            <div class="col-lg-12 d-flex flex-column">
+                
+
+                    <button class="btn-get-started scrollto" type="button" data-bs-toggle="dropdown" style="padding: 3px 20px; border-radius: 50px; border: 2px solid #47b2e4; background-color: #fff">Administrar noticia</button>
+                    <ul class="dropdown-menu"  aria-labelledby="dropdownMenuButton1">
+                        <li><a  class="dropdown-item"  href="{% url 'apps.noticia:ActualizarNoticia' posts.pk %}">Modificar </a></li>
+                        <li><a  class="dropdown-item"  href="{% url 'apps.noticia:BorrarNoticia' posts.pk %}">Eliminar </a></li>
+                    </ul>
+
+                
+            </div>
+        </div>
+    </div>
+</section>
+{% endif %}
+
+
+<section class="services section-bg">
+            <div class="container" data-aos="fade-up">
+                <div class="section-title">
+                    <h2 class="section-title"><strong>{{posts.titulo | capfirst}}</strong></h2>
+                    <img class="img-fluid" src="{{ posts.imagen.url }}">
+                    <p class="portfolio-details">Categoría: {{posts.categoria | capfirst}} // Fecha de publicación: {{posts.fecha}}</p> 
+                </div>
+
+           
+                <div class="section-title">
+                    <h4 class="section-title" style="padding-top:60px;">{{posts.subtitulo | capfirst}}</h4>
+                    <p class="col-lg text-center text-lg">{{posts.texto | capfirst}}</p>
+                </div>
+            </div>
+</section>
+
+
+<section id="contact" class="contact">
+    <div class="container" data-aos="fade-up">
+        <div class="section-title">
+            <h2>Dejanos tu comentario</h2>
+            <p>Comentarios: {{comentarios.count}}</p>
+                {% include 'comentario/listadoComentario.html' %}
+        </div>
+        <div class="section-title">
+                {% include 'comentario/agregarComentario.html' %}
+        </div>
+    </div>
+</section>
+
+{%endblock %}

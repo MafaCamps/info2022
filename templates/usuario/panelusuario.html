@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block contenido %}
+
+<section class="services section-bg">
+    
+        <div class="section-title" data-aos="fade-down">
+            <h2><br>Categorías</h2>
+            <p>Bienvenido <strong>{{user.username}}</strong>. Elija la categoria por la que quiere filtrar. </p>
+        </div>
+    
+</section>
+
+<section id="services" class="services section-bg" style="padding: 0px;">
+    {% if not categoria_list %}
+        <div class="alert alert-info">No existen categorías</div>
+        {% else %}
+            <div class="container" data-aos="fade-up" >
+                <div class="row" style="text-align:center">
+                    {% for i in categoria_list %}
+                            <div class="col-xl-3 col-md-8 align-items-stretch" data-aos="zoom-in" data-aos-delay="50" style="padding: 10px 10px;">
+                                  <div class="icon-box">
+                                    <div class="icon"><i class="bx bxl-dribbble" style="align:center;"></i></div>
+                                    <h6><a href="{% url 'apps.noticia:listarporcategoria' i.id %}">{{i.id}}</a></h6>
+                                    <h4><a href="{% url 'apps.noticia:listarporcategoria' i.nombre %}">{{i.nombre}}</a></h4>
+                                  </div>
+                            </div>
+
+                    {% endfor %}
+                </div>
+            </div>
+        {% endif %}
+</section>
+
+{% endblock contenido %}

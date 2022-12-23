@@ -1,0 +1,22 @@
+<section class="contact">
+    <div class="container" data-aos="fade-up">
+        <form method="POST" >
+            {%csrf_token%}
+            <div class="php-email-form">
+            <p>Escribí tu comentario aquí:</p><br>
+                {{ form }}
+            {% if user.is_authenticated %}
+                <button type="submit" value="Comentar"/>Comentar</button>
+            {% else %}
+                <button class="btn btn-outline-secondary" type="button">Comentar</button>
+                <div style= "padding: 30px;">Usted tiene que iniciar sesión o registrarse para poder comentar </div>
+                    <div>
+                        <a class="btn btn-outline-secondary" href="{% url 'apps.usuario:login' %}">Iniciar sesión</a>
+                        <a class="btn btn-outline-secondary" href="{% url 'apps.usuario:registrar' %}">Registrarse</a>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+        </form>
+    </div>
+</section>

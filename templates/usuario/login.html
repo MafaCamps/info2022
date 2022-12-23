@@ -1,0 +1,105 @@
+{% extends 'base.html' %}
+{% block contenido %}
+
+<form method="post">
+    {% csrf_token %}
+
+<section id="contact" class="contact" style="margin-top: 5%; center;">
+    <input type="hidden" name="email" data-form-email="true">
+    <div class="row">
+        <div hidden="hidden" data-form-alert="" class="alert alert-success col-12"></div>
+        <div hidden="hidden" data-form-alert-danger="" class="alert alert-danger col-12">Ocurrió un problema, vuelva a intentar</div>
+    </div>
+        <div class="container" data-aos="fade-up">
+            <div class="section-title">
+                <h2>Inicio de sesión</h2>
+                <p class="section-title">Ingrese su usuario y contraseña:</p>
+            </div>
+        </div>
+</section>
+
+    <div class="row d-flex justify-content-center align-items-center" data-aos="fade-up">
+        <div class="col-xl-6">
+            <div class="card rounded-3 ">
+
+                        <div class="card-body p-md-5 mx-md-4">
+                        
+                            <p>{{ form.username.label_tag }}</p>
+                            <input class="form-control" {{ form.username }} </td><br>
+
+                            <p>{{ form.password.label_tag }}</p>
+                            <input class="form-control" {{ form.password }} </td>
+
+                            <div class="text-center  pt-1 mb-5 pb-1">
+                                <button class="btn btn-outline-info" style='margin-top: 1%;' type="submit"> Iniciar Sesión </button>
+                            </div>
+                        
+                            <div class="text-center  pt-1 mb-5 pb-1" style='margin-top: 7%;'>¿Olvidaste tu contraseña?<div class="text-center">
+                                <a class="btn btn-success btn-sm" style='margin-top: 1%;' href="{% url 'apps.usuario:password_reset' %}" role="button">Recuperar la contraseña</a>
+                            </div>
+                        
+                            <div class="text-center  pt-1 mb-5 pb-1" style='margin-top: 7%;'>¿Aún no estás registrado?<div class="text-center">
+                                <a class="btn btn-outline-success" style='margin-top: 1%;' href="{% url 'apps.usuario:registrar' %}" role="button">Registrate</a>
+                            </div>
+                        
+                        </div>
+                </div>
+            </div>
+        </div><br>
+    </div>
+</form>
+
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+    {% comment %} <section id="contact" class="contact" style="margin-top: 5%; center;">
+
+                        <input type="hidden" name="email" data-form-email="true">
+                        <div class="row">
+                            <div hidden="hidden" data-form-alert="" class="alert alert-success col-12"></div>
+                            <div hidden="hidden" data-form-alert-danger="" class="alert alert-danger col-12">Ocurrió un problema, vuelva a intentar</div>
+                        </div>
+
+                            <div class="container" data-aos="fade-up">
+
+                                <div class="section-title">
+                                    <h2>Inicio de sesión</h2>
+                                    <p class="section-title">Ingrese su usuario y contraseña:</p>
+                                </div>
+                                <div class="col-lg text-center text-lg">
+                                    <td>{{ form.username.label_tag }}</td>
+                                    <td>{{ form.username }}</td>
+                                </div><br>
+                                <div class="col-lg text-center text-lg">
+                                    <td>{{ form.password.label_tag }}</td>
+                                    <td>{{ form.password }}</td>
+                                  </div><br>
+                                <div class="row">
+                                    <button class="btn btn-outline-secondary" type="submit" value="Iniciar sesión"/>Iniciar sesión </button>
+                                </div>
+
+                            </div>
+                            <div class="col-lg text-center text-lg" data-aos="fade-up" style="margin-top: 2%; center;">
+                                <a href="{% url 'apps.usuario:registrar' %}">¿Aún no estás registrado? Registrate haciendo click aquí</a>
+                                
+                            </div>
+                            <div class="col-lg text-center text-lg" data-aos="fade-up" style="margin-top: 2%; center;">
+                                <a href="{% url 'apps.usuario:password_reset' %}">¿Olvidaste tu contraseña? Recuperala haciendo click aquí</a>
+                            </div>
+
+    </section>
+</form>
+
+     {% endcomment %}
+
+

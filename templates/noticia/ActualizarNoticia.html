@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+
+
+<section data-bs-version="5.1" class="menu cid-s48OLK6784" once="menu" id="menu1-h">
+
+
+</section>
+
+
+{% block contenido %}
+
+<section data-bs-version="5.1" class="timeline3 cid-tf4QbpyVP7" id="timeline3-o">
+
+{% if noticia %}
+<div class="form-control">
+    <div class="form-control">
+        <h3 class="mbr-section-title mbr-fonts-style align-center mb-0 display-2"><strong>Noticias</strong></h3>
+    </div>
+    {% for n in Noticia_update %}
+    <div class="timelines-container mt-4">
+        <div class="row timeline-element first-separline mb-5">
+           
+            <p style='text-align: center;' class="mbr-timeline-date ">{{n.fecha}}</p>
+            <div class="timeline-date col-12">
+                <div class="timeline-date-wrapper">
+                </div>
+            </div>
+            <div class="col-12 col-md-6">
+                <div class="image-wrapper">
+                    <img style="display: block;" class="d-block w-75" src="{{ n.imagen.url }}" title="">
+                    <p class="btn btn-primary btn-sm item-categoria">{{n.categoria}}</p>
+                </div>
+            </div>
+            <div class="col-12 col-md-6">
+                <div class="timeline-text-wrapper">
+                    <h4  style="text-align: center;" class="mbr-timeline-title mbr-fonts-style mb-0 display-5"><strong>{{n.titulo}}</strong></h4>
+                    <h3 style="text-align: center;" style="display:contents;"><i>{{p.subtitulo}}</i></h3>
+                    <p ><a href="{% url 'apps.noticia:LeerPost' n.id %}" class="btn btn-primary" style="margin-left: 30%; font-size: small;">Leer Más</a></p>
+                </div>
+            </div>
+        </div>
+    </div>{% endfor %}
+</div>
+</section>
+{% endif %}
+{% comment %} <style>
+button {
+    display: inline-block;
+    color: #252537;
+    outline: none;
+    border: none;
+    text-align: center;
+    transition: all 0.2s linear;
+    margin: 7% auto;
+    letter-spacing: 0.05em;
+}
+/* buttons hover */
+button:hover {
+    transform: translatey(3px);
+    box-shadow: none;
+}
+
+/* buttons hover Animation */
+button:hover {
+    animation: ani9 0.4s ease-in-out infinite alternate;
+}
+
+@keyframes ani9 {
+    0% {
+        transform: translateY(3px);
+    }
+
+    100% {
+        transform: translateY(5px);
+    }
+}
+</style> {% endcomment %}
+
+{% endblock  %}

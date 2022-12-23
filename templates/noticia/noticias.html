@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+
+<title>{% block title %} Noticias {% endblock title %}</title>
+
+{% block contenido %}
+
+   
+    <section id="breadcrumbs" class="breadcrumbs">
+      <div class="container">
+
+        <ol>
+          <h2 style="text-align-center">Noticias</h2>
+        </ol>
+        <h5>Mirá nuestras actividades</h5>
+
+      </div>
+    </section>
+
+
+    {% for n in noticia_list %}
+    <section id="portfolio-details" class="portfolio-details" data-aos="zoom-in">
+      <div class="container">
+        
+          <div class="row gy-4">
+           
+            <div class="col-lg-8">
+              <div class="portfolio-details-slider swiper">
+                <div class="swiper-wrapper">
+                  
+                  <div class="swiper-slid">
+                    <img class="img-fluid" src="{{n.imagen.url}}" alt="">
+                  </div>
+
+                  {% comment %} <div class="swiper-slide">
+                    <img src="assets/img/portfolio/portfolio-2.jpg" alt="">
+                  </div> {% endcomment %}
+
+                  {% comment %} <div class="swiper-slide">
+                    <img src="assets/img/portfolio/portfolio-3.jpg" alt=""> 
+                  </div>  {% endcomment %}
+
+                </div>
+                <div class="swiper-pagination"></div>
+              </div>
+            </div>
+
+
+
+            <div class="col-lg-4">
+              <div class="portfolio-info" >
+                <h3 style="text-align: center;">{{n.titulo}}</h3>
+                <ul>
+                  <li><strong>Categoria</strong>: {{n.categoria}}</li>
+                  <li><strong>Publicado el</strong>: {{n.publicado}}</li>
+                  <li><strong>Dejar tu comentario</strong>: <a href="{% url 'apps.noticia:Leerpost' n.id %}"><strong>
+                  Aquí</strong></a></li>
+                </ul>
+              </div>
+              <div class="portfolio-description" style="text-align: center;">
+                <h5>{{n.subtitulo}}</h5>
+                <p>{{n.texto}}</p>
+              </div>
+            </div>
+           
+          </div>
+        
+      </div>
+    </section>
+    {% endfor %}
+
+{% endblock  %}
+
+

@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% load static %}
+<title>{% block title %} Noticias {% endblock title %}</title>
+
+{% block contenido %}
+
+<section id="services" class="services section-bg">
+  <div class="container" data-aos="fade-up">
+
+    <div class="section-title">
+      <h2>Noticias</h2>
+      <p>Mirá nuestras actividades</p>
+    </div>
+
+    <div class="row">
+
+        {% for n in object_list %}
+
+                <div class="container" data-aos="zoom-in">
+                  
+                  <div class="row">
+                    <div class="col-lg text-center text-lg">
+
+                        <div class="icon-box">
+      
+                          <h4><a><br>{{n.titulo}}</a></h4>
+                          <img src="{{n.imagen.url}}" class = "img-fluid animated" alt = "">
+                          {% comment %} <ul class="dropdown-menu" aria-labelledby="navbarDropdown" >
+                            {%for i in categoria %}
+                            <li ><a  class="dropdown-item" href="{% url 'apps.noticia:listarPorCategoria' i.nombre %}">{{i.nombre}}</a></li>
+                            {% endfor %}
+                          </ul> {% endcomment %}
+                          
+                          <h5><a href=""><br>{{n.subtitulo}}</a></h5>
+                          <h6><a href="">{{n.publicado}}</a></h6>
+                          <p>{{n.texto}}</p>
+                          <a class="cta-btn align-middle" href="{% url 'apps.noticia:Leerpost' n.id %}"><br>Podés comentar esta noticia aquí</a>
+                        </div>
+
+                        <section id="portfolio" class="portfolio">
+                          <div class="container" data-aos="fade-up">
+                          </div>
+                        </section>
+                    </div>
+                  </div>
+                </div>
+              
+        {% endfor %}
+         
+        
+
+    </div>
+
+  </div>
+</section>
+
+{% endblock  %}

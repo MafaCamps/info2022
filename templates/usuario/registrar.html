@@ -1,0 +1,133 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block contenido %}
+
+
+<form method="post">
+    {% csrf_token %}
+
+<section id="contact" class="contact" style="margin-top: 5%; center;">
+    <input type="hidden" name="email" data-form-email="true">
+    <div class="row">
+        <div hidden="hidden" data-form-alert="" class="alert alert-success col-12"></div>
+        <div hidden="hidden" data-form-alert-danger="" class="alert alert-danger col-12">Ocurrió un problema, vuelva a intentar</div>
+    </div>
+        <div class="container" data-aos="fade-up">
+            <div class="section-title">
+                <h2>Inicio de sesión</h2>
+                <p>Ingrese su usuario y contraseña:</p>
+            </div>
+        </div>
+</section>
+
+    <div class="row d-flex justify-content-center align-items-center" data-aos="fade-up">
+        <div class="col-xl-6">
+            <div class="card rounded-3 ">
+
+                        <div class="card-body p-md-5 mx-md-4">
+
+                            <p>{{ form.username.label_tag }}</p>
+                            <input class="form-control" {{ form.username }} </td><br>
+
+                            <p>{{ form.password1.label_tag }}</p>
+                            <input class="form-control" {{ form.password1 }} </td><br>
+
+                            <p>{{ form.password2.label_tag }}</p>
+                            <input class="form-control" {{ form.password2 }} </td><br>
+                        
+                            <p>{{ form.first_name.label_tag }}</p>
+                            <input class="form-control" {{ form.first_name }} </td><br>
+
+                            <p>{{ form.last_name.label_tag }}</p>
+                            <input class="form-control" {{ form.last_name }} </td><br>
+
+                            <p>{{ form.email.label_tag }}</p>
+                            <input class="form-control" {{ form.email }} </td><br>
+
+                            <p>{{ form.imagen.label_tag }}</p>
+                            <input class="form-control" {{ form.imagen }} </td><br>
+                            {{ form.media }}
+                            <div class="text-center  pt-1 mb-5 pb-1">
+                                <input class="btn btn-outline-info" style='margin-top: 1%;' type="submit" value='Registrarse'></input>
+                            </div>
+                        
+                        
+                        </div>
+                </div>
+            </div>
+        </div><br>
+    </div>
+</form>
+ 
+
+
+
+
+
+{% comment %} <form class="form" method="POST">
+    {% csrf_token %}
+
+<section id="contact" class="contact"  style="margin-top: 5%;">
+        <div class="container" data-aos="fade-up">
+        
+                <div class="section-title">
+                    <h2><br>Registro de usuario</h2>
+                    <div hidden="hidden" data-form-alert="" class="alert alert-success col-12">Gracias!</div>
+                    <div hidden="hidden" data-form-alert-danger="" class="alert alert-danger col-12">
+                        Oops...! some problem!
+                    </div>
+                </div>
+            <div class="col-lg-12 col-md-12 col-sm-12">
+                <p >
+                    Ingrese sus datos:</p>
+            </div>
+            <div class="d-grid gap-2" data-for="registrar">
+                {{form.as_p}}
+                {{form.media}}
+                <div class="d-grid gap-2">
+                    <input type="submit" value="Registrarse"/>
+                </div>
+            </div>
+        </div>
+    </section>
+</form>  {% endcomment %}
+
+
+{% comment %} <section>
+            <div class="container">
+                <div class="row content-wrapper justify-content-center">
+                    
+                        <form action="" method="POST" class="mbr-form form-with-styler" data-form-title="Form Name"><input type="hidden" name="email" data-form-email="true" value="rngJ7a+jYHa4fFidugyWQA3pT2rkpLtcFlikTEOHzXB3sfdMqsRglkQoLCMlA6HQYB08OZhS8oY6oNHM7AunVasVZ8Ncczu6meNkLSWLRlRxFrArlVnRrq6Vh8pHgl8B">
+                            <div class="row">
+                                <div hidden="hidden" data-form-alert="" class="alert alert-success col-12">Gracias!</div>
+                                <div hidden="hidden" data-form-alert-danger="" class="alert alert-danger col-12">
+                                    Oops...! some problem!
+                                </div>
+                            </div>
+                            <section id="contact" class="contact">
+                                <div class="container" data-aos="fade-up">
+                          
+                                    <div class="section-title">
+                                        <h2>Registro de usuario</h2>
+                                    </div>
+                                <div class="col-lg-12 col-md-12 col-sm-12">
+                                    <p class="mbr-text mbr-fonts-style mb-4 display-7">
+                                        Ingrese sus datos:</p>
+                                </div>
+                                <div class="col-lg-12 col-md col-12 form-group mb-3" data-for="name">
+                                    {{ form }}
+
+                                    <input type="submit" value="Guardar">
+                                </div>
+                            </section>
+                            </div>
+                        </form>
+                    </div>
+                    
+                </div>
+            </div>
+    </section>
+</form>   {% endcomment %}
+
+{% endblock %}
